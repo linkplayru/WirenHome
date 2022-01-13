@@ -180,7 +180,10 @@ public class Main {
     private static String getUptime() {
         long nowTime = System.currentTimeMillis();
         long upTime = nowTime - startTime;
-        return TimeUnit.MILLISECONDS.toDays(upTime) + " days, " + TimeUnit.MILLISECONDS.toHours(upTime) + " hours, " + TimeUnit.MILLISECONDS.toMinutes(upTime) + " minutes";
+        return String.format("%d days, %d hours, %d minutes",
+                TimeUnit.MILLISECONDS.toDays(upTime),
+                TimeUnit.MILLISECONDS.toHours(upTime) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(upTime)),
+                TimeUnit.MILLISECONDS.toMinutes(upTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(upTime)));
     }
 
     private static void test() {
