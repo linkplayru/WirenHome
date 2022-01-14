@@ -171,6 +171,7 @@ public class Main {
                 case "e" -> {
                     client.stop();
                     Log.w("end of work");
+                    Log.closeFile();
                     isWorking = false;
                 }
             }
