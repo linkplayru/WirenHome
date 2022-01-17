@@ -3,9 +3,9 @@ package ru.linkplay.wirenhome;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Log {
 
@@ -24,10 +24,9 @@ public class Log {
     }
 
     private static void openFile() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
-        Date now = new Date();
-        lastDay = TimeUnit.MILLISECONDS.toDays(now.getTime());
-        File file = new File(DIR_NAME + File.separator + dateFormat.format(now) + ".txt");
+        LocalDate now = LocalDate.now();
+        lastDay = now.getDayOfMonth();
+        File file = new File(DIR_NAME + File.separator + now.format(DateTimeFormatter.ofPattern("yyyy_MM_dd")) + ".txt");
         try {
             if (!file.exists()) {
                 if (file.createNewFile()) {
@@ -56,8 +55,8 @@ public class Log {
     }
 
     public static void w(String msg) {
-        Date now = new Date();
-        if (TimeUnit.MILLISECONDS.toDays(now.getTime()) != lastDay) {
+        LocalDateTime now = LocalDateTime.now();
+        if (now.getDayOfMonth() != lastDay) {
             openFile();
         }
         String formatMsg = "[" + now + "] " + msg;
