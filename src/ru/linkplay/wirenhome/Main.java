@@ -7,19 +7,20 @@ import ru.linkplay.wirenhome.device.RgbwLight;
 import ru.linkplay.wirenhome.event.DoubleButton;
 import ru.linkplay.wirenhome.event.SingleButton;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
     static private Client client;
-    static private long startTime;
+    static private LocalDateTime startDateTime;
 
     public static void main(String[] args) {
         boolean isWorking = true;
-        startTime = System.currentTimeMillis();
+        startDateTime = LocalDateTime.now();
         Log.w("start work");
 
         String broker = "test.mosquitto.org";
@@ -179,12 +180,30 @@ public class Main {
     }
 
     private static String getUptime() {
-        long nowTime = System.currentTimeMillis();
-        long upTime = nowTime - startTime;
-        return String.format("%d days, %d hours, %d minutes",
-                TimeUnit.MILLISECONDS.toDays(upTime),
-                TimeUnit.MILLISECONDS.toHours(upTime) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(upTime)),
-                TimeUnit.MILLISECONDS.toMinutes(upTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(upTime)));
+        LocalDateTime nowDateTime = LocalDateTime.now();
+        Duration uptime = Duration.between(startDateTime, nowDateTime);
+        long days = uptime.toDays();
+        long hours = uptime.toHoursPart();
+        long minutes = uptime.toMinutesPart();
+        StringBuilder sb = new StringBuilder();
+        sb.append(days);
+        sb.append(" day");
+        if (days != 1) {
+            sb.append("s");
+        }
+        sb.append(", ");
+        sb.append(hours);
+        sb.append(" hour");
+        if (hours != 1) {
+            sb.append("s");
+        }
+        sb.append(", ");
+        sb.append(minutes);
+        sb.append(" minute");
+        if (minutes != 1) {
+            sb.append("s");
+        }
+        return sb.toString();
     }
 
     private static void test() {
