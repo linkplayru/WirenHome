@@ -59,7 +59,7 @@ public class Log {
         if (now.getDayOfMonth() != lastDay) {
             openFile();
         }
-        String formatMsg = "[" + now + "] " + msg;
+        String formatMsg = "[" + now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "] " + msg;
         System.out.println(formatMsg);
 
         try {
