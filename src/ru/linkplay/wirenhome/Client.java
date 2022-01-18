@@ -2,6 +2,8 @@ package ru.linkplay.wirenhome;
 
 import org.eclipse.paho.client.mqttv3.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -13,7 +15,7 @@ public class Client implements MqttCallbackExtended {
     private MqttAsyncClient client;
 
     private boolean isWorking;
-    private Date lastLost;
+    private LocalDateTime lastLost;
 
     public Client(String broker) {
         subscribedSet = new HashSet<>();
@@ -73,7 +75,7 @@ public class Client implements MqttCallbackExtended {
         if (lastLost == null) {
             return "no connection lost";
         } else {
-            return lastLost.toString();
+            return lastLost.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         }
     }
 
@@ -125,7 +127,7 @@ public class Client implements MqttCallbackExtended {
     @Override
     public void connectionLost(Throwable throwable) {
         Log.w("mqtt connection lost");
-        lastLost = new Date();
+        lastLost = LocalDateTime.now();
         reconnect();
     }
 
