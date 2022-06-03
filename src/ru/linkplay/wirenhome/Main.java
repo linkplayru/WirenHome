@@ -1,9 +1,6 @@
 package ru.linkplay.wirenhome;
 
-import ru.linkplay.wirenhome.device.DeviceGroup;
-import ru.linkplay.wirenhome.device.MdmLight;
-import ru.linkplay.wirenhome.device.MrLight;
-import ru.linkplay.wirenhome.device.RgbwLight;
+import ru.linkplay.wirenhome.device.*;
 import ru.linkplay.wirenhome.event.DoubleButton;
 import ru.linkplay.wirenhome.event.SingleButton;
 
@@ -56,6 +53,7 @@ public class Main {
         RgbwLight light_77 = new RgbwLight(client, "light_77", "/devices/D2/controls/Green", "/devices/D1/controls/Green/on");
         MrLight light_78 = new MrLight(client, "light_78", "/devices/R3/controls/K4", "/devices/R3/controls/K4/on");
         MrLight light_79 = new MrLight(client, "light_79", "/devices/R3/controls/K5", "/devices/R3/controls/K5/on");
+        RShade shade = new RShade(client, "shade", "/devices/wb-gpio/controls/EXT3_ON4", "/devices/wb-gpio/controls/EXT3_DIR4", 45000, 500);
 
         DeviceGroup deviceGroup_all = new DeviceGroup();
         deviceGroup_all.add(light_11);
@@ -98,24 +96,13 @@ public class Main {
         deviceGroup_52_53.add(light_52);
         deviceGroup_52_53.add(light_53);
 
-        DeviceGroup deviceGroup_61_63_65 = new DeviceGroup();
-        deviceGroup_61_63_65.add(light_61);
-        deviceGroup_61_63_65.add(light_63);
-        deviceGroup_61_63_65.add(light_65);
+        DeviceGroup deviceGroup_61_65 = new DeviceGroup();
+        deviceGroup_61_65.add(light_61);
+        deviceGroup_61_65.add(light_65);
 
-        DeviceGroup deviceGroup_62_65 = new DeviceGroup();
-        deviceGroup_62_65.add(light_62);
-        deviceGroup_62_65.add(light_65);
-
-        DeviceGroup deviceGroup_71_72 = new DeviceGroup();
-        deviceGroup_71_72.add(light_71);
-        deviceGroup_71_72.add(light_72);
-
-        DeviceGroup deviceGroup_76_77_78_79 = new DeviceGroup();
-        deviceGroup_76_77_78_79.add(light_76);
-        deviceGroup_76_77_78_79.add(light_77);
-        deviceGroup_76_77_78_79.add(light_78);
-        deviceGroup_76_77_78_79.add(light_79);
+        DeviceGroup deviceGroup_64_65 = new DeviceGroup();
+        deviceGroup_64_65.add(light_64);
+        deviceGroup_64_65.add(light_65);
 
         DeviceGroup deviceGroup_7 = new DeviceGroup();
         deviceGroup_7.add(light_71);
@@ -125,18 +112,16 @@ public class Main {
         deviceGroup_7.add(light_75);
         deviceGroup_7.add(light_76);
         deviceGroup_7.add(light_77);
-        deviceGroup_7.add(light_78);
-        deviceGroup_7.add(light_79);
 
         DoubleButton vk_111 = new DoubleButton(client, "vk_111", "/devices/wb-gpio/controls/EXT1_IN1", light_11::toggle, deviceGroup_all::off);
-        DoubleButton vk_112 = new DoubleButton(client, "vk_111", "/devices/wb-gpio/controls/EXT1_IN2", light_12::toggle, deviceGroup_all::off);
+        DoubleButton vk_112 = new DoubleButton(client, "vk_112", "/devices/wb-gpio/controls/EXT1_IN2", light_12::toggle, deviceGroup_all::off);
         SingleButton vk_121 = new SingleButton(client, "vk_121", "/devices/wb-gpio/controls/EXT1_IN3", light_11::toggle);
         SingleButton vk_122 = new SingleButton(client, "vk_122", "/devices/wb-gpio/controls/EXT1_IN4", deviceGroup_31_33_34::toggle);
         SingleButton vk_123 = new SingleButton(client, "vk_123", "/devices/wb-gpio/controls/EXT1_IN5", light_32::toggle);
-        SingleButton vk_131 = new SingleButton(client, "vk_131", "/devices/wb-gpio/controls/EXT1_IN6", deviceGroup_61_63_65::toggle);
-        SingleButton vk_132 = new SingleButton(client, "vk_132", "/devices/wb-gpio/controls/EXT1_IN7", deviceGroup_62_65::toggle);
+        SingleButton vk_131 = new SingleButton(client, "vk_131", "/devices/wb-gpio/controls/EXT1_IN6", deviceGroup_61_65::toggle);
+        SingleButton vk_132 = new SingleButton(client, "vk_132", "/devices/wb-gpio/controls/EXT1_IN7", deviceGroup_64_65::toggle);
         SingleButton vk_321 = new SingleButton(client, "vk_321", "/devices/wb-gpio/controls/EXT1_IN8", light_34::toggle);
-        SingleButton vk_322 = new SingleButton(client, "vk_322", "/devices/wb-gpio/controls/EXT1_IN9", light_32::toggle);
+        SingleButton vk_322 = new SingleButton(client, "vk_322", "/devices/wb-gpio/controls/EXT1_IN9", light_31::toggle);
         SingleButton vk_33 = new SingleButton(client, "vk_33", "/devices/wb-gpio/controls/EXT1_IN10", light_41::toggle);
         SingleButton vk_21 = new SingleButton(client, "vk_21", "/devices/wb-gpio/controls/EXT1_IN11", deviceGroup_21_22::toggle);
         SingleButton vk_511 = new SingleButton(client, "vk_511", "/devices/wb-gpio/controls/EXT1_IN12", light_51::toggle);
@@ -146,34 +131,43 @@ public class Main {
         SingleButton vk_531 = new SingleButton(client, "vk_531", "/devices/wb-gpio/controls/EXT2_IN1", light_51::toggle);
         SingleButton vk_532 = new SingleButton(client, "vk_532", "/devices/wb-gpio/controls/EXT2_IN2", light_54::toggle);
         SingleButton vk_611 = new SingleButton(client, "vk_611", "/devices/wb-gpio/controls/EXT2_IN3", light_64::toggle);
-        SingleButton vk_612 = new SingleButton(client, "vk_612", "/devices/wb-gpio/controls/EXT2_IN4", light_63::toggle);
+        SingleButton vk_612 = new SingleButton(client, "vk_612", "/devices/wb-gpio/controls/EXT2_IN4", light_65::toggle);
         SingleButton vk_613 = new SingleButton(client, "vk_613", "/devices/wb-gpio/controls/EXT2_IN5", light_62::toggle);
         SingleButton vk_614 = new SingleButton(client, "vk_614", "/devices/wb-gpio/controls/EXT2_IN6", light_61::toggle);
-        DoubleButton vk_711 = new DoubleButton(client, "vk_711", "/devices/wb-gpio/controls/EXT2_IN7", deviceGroup_71_72::toggle, deviceGroup_7::off);
-        SingleButton vk_712 = new SingleButton(client, "vk_712", "/devices/wb-gpio/controls/EXT2_IN8", deviceGroup_76_77_78_79::toggle);
-        SingleButton vk_721 = new SingleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", deviceGroup_71_72::toggle);
+        DoubleButton vk_711 = new DoubleButton(client, "vk_711", "/devices/wb-gpio/controls/EXT2_IN7", light_71::toggle, deviceGroup_7::off);
+        DoubleButton vk_712 = new DoubleButton(client, "vk_712", "/devices/wb-gpio/controls/EXT2_IN8", light_72::toggle, light_73::toggle);
+        DoubleButton vk_721 = new DoubleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", light_72::toggle, light_73::toggle);
         SingleButton vk_722 = new SingleButton(client, "vk_722", "/devices/wb-gpio/controls/EXT2_IN10", light_74::toggle);
-        SingleButton vk_731 = new SingleButton(client, "vk_731", "/devices/wb-gpio/controls/EXT2_IN11", deviceGroup_71_72::toggle);
+        DoubleButton vk_731 = new DoubleButton(client, "vk_731", "/devices/wb-gpio/controls/EXT2_IN11", light_72::toggle, light_73::toggle);
         SingleButton vk_732 = new SingleButton(client, "vk_732", "/devices/wb-gpio/controls/EXT2_IN12", light_75::toggle);
         SingleButton vk_741 = new SingleButton(client, "vk_741", "/devices/wb-gpio/controls/EXT2_IN13", light_73::toggle);
-        SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", deviceGroup_76_77_78_79::toggle);
+        SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", shade::one);
 
         client.start();
 
         Scanner s = new Scanner(System.in);
         while (isWorking) {
-            switch (s.nextLine()) {
-                case "u" -> Log.i("uptime: " + getUptime());
-                case "l" -> Log.i("last connection lost: " + client.getLastConnectionLost());
-                case "t" -> {
-                    Log.i("test vk_111");
-                    test();
+            if (s.hasNextLine()) {
+                switch (s.nextLine()) {
+                    case "u" -> Log.i("uptime: " + getUptime());
+                    case "l" -> Log.i("last connection lost: " + client.getLastConnectionLost());
+                    case "t" -> {
+                        Log.i("test vk_742");
+                        test();
+                    }
+                    case "e" -> {
+                        client.stop();
+                        shade.interrupt();
+                        Log.w("end of work");
+                        Log.closeFile();
+                        isWorking = false;
+                    }
                 }
-                case "e" -> {
-                    client.stop();
-                    Log.w("end of work");
-                    Log.closeFile();
-                    isWorking = false;
+            } else {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -211,13 +205,13 @@ public class Main {
         testTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                client.publish("/devices/wb-gpio/controls/EXT1_IN1", "1");
+                client.publish("/devices/wb-gpio/controls/EXT2_IN14", "1");
             }
         }, 100);
         testTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                client.publish("/devices/wb-gpio/controls/EXT1_IN1", "0");
+                client.publish("/devices/wb-gpio/controls/EXT2_IN14", "0");
                 testTimer.cancel();
             }
         }, 2100);
