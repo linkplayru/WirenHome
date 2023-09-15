@@ -136,12 +136,12 @@ public class Main {
         SingleButton vk_614 = new SingleButton(client, "vk_614", "/devices/wb-gpio/controls/EXT2_IN6", light_61::toggle);
         DoubleButton vk_711 = new DoubleButton(client, "vk_711", "/devices/wb-gpio/controls/EXT2_IN7", light_71::toggle, deviceGroup_7::off);
         DoubleButton vk_712 = new DoubleButton(client, "vk_712", "/devices/wb-gpio/controls/EXT2_IN8", light_72::toggle, light_73::toggle);
-        DoubleButton vk_721 = new DoubleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", light_72::toggle, light_73::toggle);
+        //DoubleButton vk_721 = new DoubleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", light_72::toggle, light_73::toggle);
         SingleButton vk_722 = new SingleButton(client, "vk_722", "/devices/wb-gpio/controls/EXT2_IN10", light_74::toggle);
         DoubleButton vk_731 = new DoubleButton(client, "vk_731", "/devices/wb-gpio/controls/EXT2_IN11", light_72::toggle, light_73::toggle);
         SingleButton vk_732 = new SingleButton(client, "vk_732", "/devices/wb-gpio/controls/EXT2_IN12", light_75::toggle);
         SingleButton vk_741 = new SingleButton(client, "vk_741", "/devices/wb-gpio/controls/EXT2_IN13", light_73::toggle);
-        SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", shade::one);
+        //SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", shade::one);
 
         client.start();
 
