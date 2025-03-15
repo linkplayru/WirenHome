@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static ru.linkplay.wirenhome.Constants.BUTTON_MODE_TOPIC;
+
 public class Main {
 
     static private Client client;
@@ -20,7 +22,7 @@ public class Main {
         startDateTime = LocalDateTime.now();
         Log.w("start work");
 
-        String broker = "test.mosquitto.org";
+        String broker = "192.168.0.114";
         if (args.length == 1) {
             broker = args[0];
         }
@@ -113,35 +115,35 @@ public class Main {
         deviceGroup_7.add(light_76);
         deviceGroup_7.add(light_77);
 
-        DoubleButton vk_111 = new DoubleButton(client, "vk_111", "/devices/wb-gpio/controls/EXT1_IN1", light_11::toggle, deviceGroup_all::off);
-        DoubleButton vk_112 = new DoubleButton(client, "vk_112", "/devices/wb-gpio/controls/EXT1_IN2", light_12::toggle, deviceGroup_all::off);
-        SingleButton vk_121 = new SingleButton(client, "vk_121", "/devices/wb-gpio/controls/EXT1_IN3", light_11::toggle);
-        SingleButton vk_122 = new SingleButton(client, "vk_122", "/devices/wb-gpio/controls/EXT1_IN4", deviceGroup_31_33_34::toggle);
-        SingleButton vk_123 = new SingleButton(client, "vk_123", "/devices/wb-gpio/controls/EXT1_IN5", light_32::toggle);
-        SingleButton vk_131 = new SingleButton(client, "vk_131", "/devices/wb-gpio/controls/EXT1_IN6", deviceGroup_61_65::toggle);
-        SingleButton vk_132 = new SingleButton(client, "vk_132", "/devices/wb-gpio/controls/EXT1_IN7", deviceGroup_64_65::toggle);
-        SingleButton vk_321 = new SingleButton(client, "vk_321", "/devices/wb-gpio/controls/EXT1_IN8", light_34::toggle);
-        SingleButton vk_322 = new SingleButton(client, "vk_322", "/devices/wb-gpio/controls/EXT1_IN9", light_31::toggle);
-        SingleButton vk_33 = new SingleButton(client, "vk_33", "/devices/wb-gpio/controls/EXT1_IN10", light_41::toggle);
-        SingleButton vk_21 = new SingleButton(client, "vk_21", "/devices/wb-gpio/controls/EXT1_IN11", deviceGroup_21_22::toggle);
-        SingleButton vk_511 = new SingleButton(client, "vk_511", "/devices/wb-gpio/controls/EXT1_IN12", light_51::toggle);
-        SingleButton vk_512 = new SingleButton(client, "vk_512", "/devices/wb-gpio/controls/EXT1_IN13", deviceGroup_52_53::toggle);
-        SingleButton vk_513 = new SingleButton(client, "vk_513", "/devices/wb-gpio/controls/EXT1_IN14", light_54::toggle);
+        DoubleButton vk_111 = new DoubleButton(client, "vk_111", "/devices/wb-gpio/controls/EXT1_IN1", BUTTON_MODE_TOPIC, light_11::toggle, deviceGroup_all::off);
+        DoubleButton vk_112 = new DoubleButton(client, "vk_112", "/devices/wb-gpio/controls/EXT1_IN2", BUTTON_MODE_TOPIC, light_12::toggle, deviceGroup_all::off);
+        SingleButton vk_121 = new SingleButton(client, "vk_121", "/devices/wb-gpio/controls/EXT1_IN3", BUTTON_MODE_TOPIC, light_11::toggle);
+        SingleButton vk_122 = new SingleButton(client, "vk_122", "/devices/wb-gpio/controls/EXT1_IN4", BUTTON_MODE_TOPIC, deviceGroup_31_33_34::toggle);
+        SingleButton vk_123 = new SingleButton(client, "vk_123", "/devices/wb-gpio/controls/EXT1_IN5", BUTTON_MODE_TOPIC, light_32::toggle);
+        SingleButton vk_131 = new SingleButton(client, "vk_131", "/devices/wb-gpio/controls/EXT1_IN6", BUTTON_MODE_TOPIC, deviceGroup_61_65::toggle);
+        SingleButton vk_132 = new SingleButton(client, "vk_132", "/devices/wb-gpio/controls/EXT1_IN7", BUTTON_MODE_TOPIC, deviceGroup_64_65::toggle);
+        SingleButton vk_321 = new SingleButton(client, "vk_321", "/devices/wb-gpio/controls/EXT1_IN8", BUTTON_MODE_TOPIC, light_34::toggle);
+        SingleButton vk_322 = new SingleButton(client, "vk_322", "/devices/wb-gpio/controls/EXT1_IN9", BUTTON_MODE_TOPIC, light_31::toggle);
+        SingleButton vk_33 = new SingleButton(client, "vk_33", "/devices/wb-gpio/controls/EXT1_IN10", BUTTON_MODE_TOPIC, light_41::toggle);
+        SingleButton vk_21 = new SingleButton(client, "vk_21", "/devices/wb-gpio/controls/EXT1_IN11", BUTTON_MODE_TOPIC, deviceGroup_21_22::toggle);
+        SingleButton vk_511 = new SingleButton(client, "vk_511", "/devices/wb-gpio/controls/EXT1_IN12", BUTTON_MODE_TOPIC, light_51::toggle);
+        SingleButton vk_512 = new SingleButton(client, "vk_512", "/devices/wb-gpio/controls/EXT1_IN13", BUTTON_MODE_TOPIC, deviceGroup_52_53::toggle);
+        SingleButton vk_513 = new SingleButton(client, "vk_513", "/devices/wb-gpio/controls/EXT1_IN14", BUTTON_MODE_TOPIC, light_54::toggle);
 
-        SingleButton vk_531 = new SingleButton(client, "vk_531", "/devices/wb-gpio/controls/EXT2_IN1", light_51::toggle);
-        SingleButton vk_532 = new SingleButton(client, "vk_532", "/devices/wb-gpio/controls/EXT2_IN2", light_54::toggle);
-        SingleButton vk_611 = new SingleButton(client, "vk_611", "/devices/wb-gpio/controls/EXT2_IN3", light_64::toggle);
-        SingleButton vk_612 = new SingleButton(client, "vk_612", "/devices/wb-gpio/controls/EXT2_IN4", light_65::toggle);
-        SingleButton vk_613 = new SingleButton(client, "vk_613", "/devices/wb-gpio/controls/EXT2_IN5", light_62::toggle);
-        SingleButton vk_614 = new SingleButton(client, "vk_614", "/devices/wb-gpio/controls/EXT2_IN6", light_61::toggle);
-        DoubleButton vk_711 = new DoubleButton(client, "vk_711", "/devices/wb-gpio/controls/EXT2_IN7", light_71::toggle, deviceGroup_7::off);
-        DoubleButton vk_712 = new DoubleButton(client, "vk_712", "/devices/wb-gpio/controls/EXT2_IN8", light_72::toggle, light_73::toggle);
-        //DoubleButton vk_721 = new DoubleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", light_72::toggle, light_73::toggle);
-        SingleButton vk_722 = new SingleButton(client, "vk_722", "/devices/wb-gpio/controls/EXT2_IN10", light_74::toggle);
-        DoubleButton vk_731 = new DoubleButton(client, "vk_731", "/devices/wb-gpio/controls/EXT2_IN11", light_72::toggle, light_73::toggle);
-        SingleButton vk_732 = new SingleButton(client, "vk_732", "/devices/wb-gpio/controls/EXT2_IN12", light_75::toggle);
-        SingleButton vk_741 = new SingleButton(client, "vk_741", "/devices/wb-gpio/controls/EXT2_IN13", light_73::toggle);
-        //SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", shade::one);
+        SingleButton vk_531 = new SingleButton(client, "vk_531", "/devices/wb-gpio/controls/EXT2_IN1", BUTTON_MODE_TOPIC, light_51::toggle);
+        SingleButton vk_532 = new SingleButton(client, "vk_532", "/devices/wb-gpio/controls/EXT2_IN2", BUTTON_MODE_TOPIC, light_54::toggle);
+        SingleButton vk_611 = new SingleButton(client, "vk_611", "/devices/wb-gpio/controls/EXT2_IN3", BUTTON_MODE_TOPIC, light_64::toggle);
+        SingleButton vk_612 = new SingleButton(client, "vk_612", "/devices/wb-gpio/controls/EXT2_IN4", BUTTON_MODE_TOPIC, light_65::toggle);
+        SingleButton vk_613 = new SingleButton(client, "vk_613", "/devices/wb-gpio/controls/EXT2_IN5", BUTTON_MODE_TOPIC, light_62::toggle);
+        SingleButton vk_614 = new SingleButton(client, "vk_614", "/devices/wb-gpio/controls/EXT2_IN6", BUTTON_MODE_TOPIC, light_61::toggle);
+        DoubleButton vk_711 = new DoubleButton(client, "vk_711", "/devices/wb-gpio/controls/EXT2_IN7", BUTTON_MODE_TOPIC, light_71::toggle, deviceGroup_7::off);
+        DoubleButton vk_712 = new DoubleButton(client, "vk_712", "/devices/wb-gpio/controls/EXT2_IN8", BUTTON_MODE_TOPIC, light_72::toggle, light_73::toggle);
+        //DoubleButton vk_721 = new DoubleButton(client, "vk_721", "/devices/wb-gpio/controls/EXT2_IN9", BUTTON_MODE_TOPIC, light_72::toggle, light_73::toggle);
+        SingleButton vk_722 = new SingleButton(client, "vk_722", "/devices/wb-gpio/controls/EXT2_IN10", BUTTON_MODE_TOPIC, light_74::toggle);
+        DoubleButton vk_731 = new DoubleButton(client, "vk_731", "/devices/wb-gpio/controls/EXT2_IN11", BUTTON_MODE_TOPIC, light_72::toggle, light_73::toggle);
+        SingleButton vk_732 = new SingleButton(client, "vk_732", "/devices/wb-gpio/controls/EXT2_IN12", BUTTON_MODE_TOPIC, light_75::toggle);
+        SingleButton vk_741 = new SingleButton(client, "vk_741", "/devices/wb-gpio/controls/EXT2_IN13", BUTTON_MODE_TOPIC, light_73::toggle);
+        //SingleButton vk_742 = new SingleButton(client, "vk_742", "/devices/wb-gpio/controls/EXT2_IN14", BUTTON_MODE_TOPIC, shade::one);
 
         client.start();
 
@@ -152,7 +154,7 @@ public class Main {
                     case "u" -> Log.i("uptime: " + getUptime());
                     case "l" -> Log.i("last connection lost: " + client.getLastConnectionLost());
                     case "t" -> {
-                        Log.i("test vk_742");
+                        Log.i("test");
                         test();
                     }
                     case "e" -> {
@@ -205,16 +207,16 @@ public class Main {
         testTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                client.publish("/devices/wb-gpio/controls/EXT2_IN14", "1");
+                client.publish("/devices/wb-gpio/controls/EXT1_IN3", "1");
             }
         }, 100);
         testTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                client.publish("/devices/wb-gpio/controls/EXT2_IN14", "0");
+                client.publish("/devices/wb-gpio/controls/EXT1_IN3", "0");
                 testTimer.cancel();
             }
-        }, 2100);
+        }, 100);
     }
 
 }
