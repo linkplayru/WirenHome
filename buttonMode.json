@@ -1,0 +1,46 @@
+{
+  "manufacturer": "Shalash",
+  "model": "ButtonMode",
+  "services": [
+    {
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": {
+            "type": "Integer",
+            "topicSearch": "/devices/(ButtonMode)/controls/status",
+            "topicGet": "/devices/(1)/controls/normal",
+            "topicSet": "/devices/(1)/controls/normal/on"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": {
+            "type": "Integer",
+            "topicGet": "/devices/(1)/controls/protect",
+            "topicSet": "/devices/(1)/controls/protect/on"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": {
+            "type": "Integer",
+            "topicGet": "/devices/(1)/controls/off",
+            "topicSet": "/devices/(1)/controls/off/on"
+          }
+        }
+      ]
+    }
+  ]
+}
